@@ -2,12 +2,12 @@
     <mat-checkbox color="primary" class="showPreview showPreviewCheckbox" type="checkbox" [(ngModel)]="this.hidePreview">Hide Preview</mat-checkbox>
     <p class="entryTag" *ngFor="let tag of activeSearchTags" (click)="unsearch(tag)">{{tag}} X</p>
 
-    <div *ngFor="let entry of activeEntries" class="entryCard" (click)="openDialog(entry.name, entry.tags, entry.text)">
+    <div *ngFor="let entry of activeEntries" class="entryCard" (click)="openDialog(entry.name, entry.tags, entry.text, entry.date, entry.dateString)">
         <div class="entryFirstLine">
             <h1 class="entryName">{{entry.name}}</h1>
-            <h1 class="entryDate">12/31/2019</h1>
+            <h1 class="entryDate">{{entry.dateString}}</h1>
         </div>
         <p class="entryTag" *ngFor="let tag of entry.tags" (click)="search(tag)" onclick='event.stopPropagation();'>{{tag}}</p>
-        <p *ngIf="this.hidePreview === false" class="text">{{entry.text}}</p>
+        <div *ngIf="this.hidePreview === false" [innerHTML]="entry.text" class="text"></div>
     </div>
 </div>

@@ -1,7 +1,7 @@
 .wrapper {
-    margin-top: 64px;
     width:100%;
     height:100%;
+    overflow:auto;
 }
 
 .date {
@@ -10,7 +10,7 @@
     padding:5px;
     border-radius:5px;
     margin:0;
-    margin-top:32px;
+    margin-top:96px;
     margin-left:32px;
     font-family: "Segoe UI";
     color:rgba(255,255,255,0.6);
@@ -27,18 +27,131 @@
 }
 
 .textWrapper {
-    width:95%;
+    width:65%;
     margin: 0 auto;
-    display:flex;
-    height:100%;
+    height:80vh;
+    margin-bottom:32px;
 }
 
 .text {
     outline:none;
     width:100%;
-    background-color: rgb(255,255,235);
     font-family: "Segoe UI";
     font-size:16px;
     line-height: 1.75rem;
+    margin-bottom:32px;
 }
 
+.tagInputWrapper {
+    margin-left: 20px;
+}
+
+.tags {
+    user-select: none;
+    margin:0;
+    font-family: "Segoe UI";
+    font-size:12px;
+    margin-bottom:5px;
+    margin-left:10px;
+    background-color:rgb(0, 160, 100, 0.8);
+    color:rgba(255,255,255,0.8);
+    letter-spacing: 1px;
+    border-radius:5px;
+    padding:3px;
+    padding-right: 5px;
+    padding-left: 5px;
+    display:inline-flex;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index : 97;
+}
+
+.tags:hover {
+    background-color:rgb(0, 160, 100, 0.6);
+}
+
+.buttonWrapper {
+    position: fixed;
+    margin:10px;
+    border-radius:15px;
+    margin-right:64px;
+    margin-bottom:32px;
+    right:0;
+    bottom:0;
+    background-color: rgb(37, 93, 157);
+    box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.2), 0px 0px 4px 6px rgba(0, 0, 0, 0.19);
+    padding:10px;
+}
+
+
+.button {
+    margin:5px;
+    border:0;
+    color: white;
+    padding:15px;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-radius:5px;
+    font-size:16px;
+    background-color: rgba(0,0,0,0.2);
+    cursor: pointer;
+    appearance: none;
+    box-shadow: none;
+    transition: 0.3s all;
+}
+
+
+.button:hover {
+    background-color: rgba(0,0,0,0.4);
+}
+
+@media only screen and (max-width:768px) {
+    .textWrapper {
+        width:90%;
+        margin-bottom: 0;
+    }
+
+    .buttonWrapper {
+        background-color:transparent;
+        box-shadow: none;
+        position:relative;
+        width:265px;
+        right:auto;
+        bottom:auto;
+        margin:0;
+        margin-left: 5%;
+        margin-bottom:0;
+    }
+
+    .button {
+        background-color: rgb(37, 93, 157);
+    }
+
+    .button:hover {
+        background-color: rgb(17, 73, 137);
+    }
+}
+
+::ng-deep .dateInput {
+    min-width: 0;
+    opacity: 0;
+    color:rgba(0,0,0,0);
+    width:0;
+    height:0;
+    padding:0;
+    margin:0;
+    border:none;
+    display:none;
+    visibility: hidden;
+    transform:scale(0);
+}
+
+.dateInputs {
+    display: inline-flex;
+    margin:0;
+    margin-left:-170px;
+}
+
+::ng-deep .dateInputs .mat-form-field-underline {
+    display: none;
+}

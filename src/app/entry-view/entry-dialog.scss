@@ -52,3 +52,23 @@
     padding-left: 5px;
     display:inline-flex;
 }
+
+@media only screen and (max-width:768px) {
+    .entryFirstLine {
+        display: block;
+    }
+
+    .entryName {
+        display:block;
+    }
+
+    .entryDate {
+        position: relative;
+        width:100%;
+        display:auto;
+    }
+
+    .entryTag {
+        display : inline-flex;
+    }
+}

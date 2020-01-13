@@ -125,7 +125,7 @@
     font-size:18px;
     transition: all 0.3s;
     opacity: 0;
-    margin-left:55px;
+    margin-right:0px;
 }
 
 .link:hover {
@@ -140,7 +140,9 @@
 .sideNavActive .link {
     opacity:1;
     margin-left:0px;
-    transition: all 0.3s 0.5s;
+    margin-right:36px;
+    transition: all 0.3s 0.5s,
+     color 0.3s;
 }
 
 @media only screen and (max-width: 1024px) {

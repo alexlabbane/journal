@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from '@angular/forms'
 import { NavComponent } from './nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -14,6 +15,20 @@ import { NewEntryComponent } from './new-entry/new-entry.component'
 import { MatFormFieldModule} from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core'
+import { AngularFireModule } from '@angular/fire'
+import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { environment } from '../environments/environment'
+
+if (!environment.firebase) {
+  if (!environment.firebase.apiKey) {
+    window.alert("configErrMsg");
+  } else if (environment.firebase.storageBucket === '') {
+    window.alert("bucketErrMsg");
+  }
+}
 
 @NgModule({
   declarations: [
@@ -30,12 +45,18 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
     MatToolbarModule,
     FormsModule,
     MatDialogModule,
+    HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    AngularEditorModule
   ],
   entryComponents : [EventDialog],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

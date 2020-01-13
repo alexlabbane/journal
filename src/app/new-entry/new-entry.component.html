@@ -1,9 +1,28 @@
+
 <div class="wrapper">
-    <h1 class="date">12/31/2019</h1>
-    <mat-form-field class="title" placeholder="Name">
-        <input matInput placeholder="Entry Name">
+
+
+    <h1 class="date">{{this.dateString}}</h1>
+    <mat-form-field class='dateInputs'>
+        <input matInput [(ngModel)]="this.currentDate" (dateChange)="updateDate()" [matDatepicker]="picker" name="Date" class='dateInput'>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <div class="textWrapper" contenteditable="true">
-        <textarea class="text"></textarea>
+
+    <mat-form-field class="tagInputWrapper">
+        <input matInput class="tagInput" placeholder="Enter Tags..." [(ngModel)]="this.currentTagInput"(keyup)="$event.keyCode == 13 ? addTag() : null">
+    </mat-form-field>
+    <p class="tags" *ngFor="let tag of this.currentTags" (click)="removeTag(tag)">{{tag}} X</p>
+
+    <mat-form-field class="title" placeholder="Name">
+        <input matInput [(ngModel)]="this.currentNameInput" placeholder="Entry Name">
+    </mat-form-field>
+    <div class="textWrapper">
+        <angular-editor class="text" [(ngModel)]="this.htmlContent"></angular-editor>
+    </div>
+
+    <div class="buttonWrapper">
+        <button class="button submit" (click)="onSubmit()">Submit</button>
+        <button class="button cancel" routerLink="/home">Cancel</button>
     </div>
 </div>

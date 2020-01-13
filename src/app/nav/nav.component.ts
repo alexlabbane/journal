@@ -50,4 +50,9 @@ export class NavComponent implements OnInit {
       console.log("Oof");
     });
   }
+
+  toggleNavigationLinks() {
+    const sideNav = document.querySelector('.sideNav');
+    sideNav.classList.toggle('sideNavActive');
+  }
 }

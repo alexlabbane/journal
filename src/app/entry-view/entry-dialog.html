@@ -1,6 +1,7 @@
 <div class="entryFirstLine">
     <h1 class="entryName">{{data.name}}</h1>
-    <h1 class="entryDate">12/31/2019</h1>
+    <h1 class="entryDate">{{data.dateString}}</h1>
 </div>
 <p class="entryTag" *ngFor="let tag of data.tags">{{tag}}</p>
-<p class="text">{{data.text}}</p>
+<div [innerHTML]="data.text" class="text"></div>
+
