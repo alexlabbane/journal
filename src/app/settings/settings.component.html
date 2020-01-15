@@ -1,0 +1,7 @@
+<div class="wrapper">
+    <h1>Manage Tags</h1>
+    <mat-form-field class="tagInputWrapper">
+        <input matInput class="tagInput" placeholder="Enter New Tags..." [(ngModel)]="this.currentTagInput"(keyup)="$event.keyCode == 13 ? addTag() : null">
+    </mat-form-field>
+    <p class="tags" *ngFor="let tag of this.entryService.tags" (click)="removeTag(tag)">{{tag}} X</p>
+</div>

@@ -15,6 +15,7 @@ export class EntryViewComponent implements OnInit {
   activeEntries = [];
   activeSearchTags = [];
   hidePreview = false;
+  currentDate = new Date();
 
   constructor(public dialog : MatDialog, public database : AngularFireDatabase, public EntryService : EntryServiceService) { }
 
@@ -22,7 +23,13 @@ export class EntryViewComponent implements OnInit {
     //Subscribe to journal entries
     this.database.list('/entries').valueChanges().subscribe((values : []) => {
       this.entries = [];
-        
+      
+      values.sort(function(a : any, b : any) {
+        let aDate = new Date(a.date);
+        let bDate = new Date(b.date);
+        return bDate.getTime() - aDate.getTime();
+      });
+
       values.forEach((value) => {
         let toPush : any = value;
         let tags : String = toPush.tags;
@@ -67,6 +74,20 @@ export class EntryViewComponent implements OnInit {
     }
 
     //TODO: Filter by search terms
+  }
+
+  filterDate() {
+    console.log(this.currentDate.toISOString());
+    let compareDate = new Date(this.currentDate.valueOf() + 24 * 60 * 60 * 1000);
+
+    this.filterItems();
+    for(let i = 0; i < this.activeEntries.length; i++) {
+      let entryDate : Date = new Date(this.activeEntries[i].date);
+      if (entryDate >= compareDate) {
+        this.activeEntries.splice(i, 1);
+        i--;
+      } 
+    }
   }
 
   search(elem) {

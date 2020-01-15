@@ -1,5 +1,10 @@
 <div class="wrapper">
     <mat-checkbox color="primary" class="showPreview showPreviewCheckbox" type="checkbox" [(ngModel)]="this.hidePreview">Hide Preview</mat-checkbox>
+    <mat-form-field class='dateFilterForm'>
+        <input matInput [(ngModel)]="this.currentDate" (dateChange)="filterDate()" placeholder="Filter by date..." [matDatepicker]="picker" name="Date" class='dateFilter'>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
     <p class="entryTag" *ngFor="let tag of activeSearchTags" (click)="unsearch(tag)">{{tag}} X</p>
 
     <div *ngFor="let entry of activeEntries" class="entryCard" (click)="openDialog(entry.name, entry.tags, entry.text, entry.date, entry.dateString)">

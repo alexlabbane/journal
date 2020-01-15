@@ -10,7 +10,9 @@
     </mat-form-field>
 
     <mat-form-field class="tagInputWrapper">
-        <input matInput class="tagInput" placeholder="Enter Tags..." [(ngModel)]="this.currentTagInput"(keyup)="$event.keyCode == 13 ? addTag() : null">
+        <mat-select class="tagInput" placeholder="Add Tags..." [(ngModel)]="this.currentTagInput">
+            <mat-option *ngFor="let tag of this.entryService.tags" class="tagInput" (click)="addTag(tag)">{{tag}}</mat-option>
+        </mat-select>
     </mat-form-field>
     <p class="tags" *ngFor="let tag of this.currentTags" (click)="removeTag(tag)">{{tag}} X</p>
 

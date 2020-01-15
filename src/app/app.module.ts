@@ -17,10 +17,12 @@ import { MatInputModule } from '@angular/material/input'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core'
+import { MatSelectModule } from '@angular/material/select'
 import { AngularFireModule } from '@angular/fire'
 import { AngularFireDatabaseModule } from '@angular/fire/database'
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { environment } from '../environments/environment'
+import { environment } from '../environments/environment';
+import { SettingsComponent } from './settings/settings.component'
 
 if (!environment.firebase) {
   if (!environment.firebase.apiKey) {
@@ -36,7 +38,8 @@ if (!environment.firebase) {
     NavComponent,
     EntryViewComponent,
     EventDialog,
-    NewEntryComponent
+    NewEntryComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ if (!environment.firebase) {
     AngularFireDatabaseModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSelectModule,
     AngularEditorModule
   ],
   entryComponents : [EventDialog],

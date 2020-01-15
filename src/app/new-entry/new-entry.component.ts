@@ -31,13 +31,8 @@ export class NewEntryComponent implements OnInit {
     this.dateString = this.currentDate.toLocaleDateString();
   }
 
-  addTag() {
-    let tags = this.currentTagInput.split(",");
-    
-    for(let i = 0; i < tags.length; i++) {
-      tags[i] = tags[i].trim();
-      this.currentTags.add(tags[i]);
-    }
+  addTag(tag : String) {
+    if(tag.length > 0) this.currentTags.add(tag);
 
     this.currentTagInput = '';
   }

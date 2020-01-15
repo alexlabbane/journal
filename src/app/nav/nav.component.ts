@@ -52,7 +52,10 @@ export class NavComponent implements OnInit {
   }
 
   toggleNavigationLinks() {
+    const hamburger = document.querySelector('.right');
     const sideNav = document.querySelector('.sideNav');
+    
     sideNav.classList.toggle('sideNavActive');
+    hamburger.classList.toggle('hamburgerActive');
   }
 }
