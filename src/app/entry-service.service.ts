@@ -9,6 +9,11 @@ export class EntryServiceService {
   nextID : Number = -1;
   tags : Set<String> = new Set();
 
+  //For edits
+  isEdit : boolean = false; //Denotes whether or not event is being edited on new event page
+  editID : number = -1;
+  editObject : any = null;
+
   constructor(public database : AngularFireDatabase) { 
 
     //Subscribe to nextID

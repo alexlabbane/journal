@@ -7,7 +7,7 @@
     </mat-form-field>
     <p class="entryTag" *ngFor="let tag of activeSearchTags" (click)="unsearch(tag)">{{tag}} X</p>
 
-    <div *ngFor="let entry of activeEntries" class="entryCard" (click)="openDialog(entry.name, entry.tags, entry.text, entry.date, entry.dateString)">
+    <div *ngFor="let entry of activeEntries" class="entryCard" (click)="openDialog(entry.name, entry.tags, entry.text, entry.date, entry.dateString, entry.id)">
         <div class="entryFirstLine">
             <h1 class="entryName">{{entry.name}}</h1>
             <h1 class="entryDate">{{entry.dateString}}</h1>

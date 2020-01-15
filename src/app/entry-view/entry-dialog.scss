@@ -53,6 +53,18 @@
     display:inline-flex;
 }
 
+.icons {
+    display: inline-flex;
+    margin:0;
+    margin-top:15px;
+    color:rgba(0,0,0,0.6);
+    cursor: pointer;
+}
+
+.icons:hover {
+    color: rgba(37, 93, 157, 1);
+}
+
 @media only screen and (max-width:768px) {
     .entryFirstLine {
         display: block;
@@ -70,5 +82,16 @@
 
     .entryTag {
         display : inline-flex;
+    }
+
+    .icons {
+        margin: 10px;
+        margin-right:0;
+        margin-top:5px;
+        margin-bottom:10px;
+    }
+
+    .delete {
+        margin:0
     }
 }

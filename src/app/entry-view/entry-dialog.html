@@ -1,6 +1,10 @@
 <div class="entryFirstLine">
     <h1 class="entryName">{{data.name}}</h1>
     <h1 class="entryDate">{{data.dateString}}</h1>
+    <mat-icon matTooltip="Edit Entry" (click)="editClick()" class="icons edit">edit</mat-icon>
+    <mat-icon matTooltip="Delete Entry" (click)="deleteClick()" class="icons delete">delete</mat-icon>
+
+
 </div>
 <p class="entryTag" *ngFor="let tag of data.tags">{{tag}}</p>
 <div [innerHTML]="data.text" class="text"></div>

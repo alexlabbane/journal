@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject, ComponentFactoryResolver } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
-import { Data } from '@angular/router';
+import { Data, Router } from '@angular/router';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { EntryServiceService } from '../entry-service.service';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-entry-view',
@@ -45,7 +46,7 @@ export class EntryViewComponent implements OnInit {
 
   ngAfterViewInit() { }
 
-  openDialog(name, tags, text, date, dateString) {
+  openDialog(name, tags, text, date, dateString, id) {
     const dialogRef = this.dialog.open(EventDialog, {
       height: '80%',
       width: '800px',
@@ -54,7 +55,8 @@ export class EntryViewComponent implements OnInit {
         tags: tags,
         text: text,
         date : date,
-        dateString : dateString
+        dateString : dateString,
+        id : id
       }
     });
   }
@@ -120,12 +122,37 @@ export class EntryViewComponent implements OnInit {
 })
 export class EventDialog {
   constructor(
+    public router : Router,
+    public entryService : EntryServiceService,
     public dialogRef: MatDialogRef<EventDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Data) { 
       console.log(data);
     }
 
   onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  editClick() {
+    //TODO edit item based on data.id
+    console.log("edit");
+    this.entryService.isEdit = true;
+    this.entryService.editID = this.data.id;
+    this.entryService.editObject = this.data;
+
+    this.dialogRef.close();
+    this.router.navigateByUrl('/new-entry');
+  }
+
+  deleteClick() {
+    //TODO delete item based on data.id
+    //Open a confirmation dialog
+    let result = window.confirm("Are you sure you would like to delete this journal entry? It cannot be recovered.");
+    
+    if(result) {
+      //Find event and delete it from the database
+    }
+
     this.dialogRef.close();
   }
 

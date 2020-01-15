@@ -18,6 +18,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core'
 import { MatSelectModule } from '@angular/material/select'
+import { MatIconModule } from '@angular/material/icon'
+import { MatTooltipModule, MatTooltip } from '@angular/material/tooltip'
 import { AngularFireModule } from '@angular/fire'
 import { AngularFireDatabaseModule } from '@angular/fire/database'
 import { AngularEditorModule } from '@kolkov/angular-editor';
@@ -57,6 +59,8 @@ if (!environment.firebase) {
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatIconModule,
+    MatTooltipModule,
     AngularEditorModule
   ],
   entryComponents : [EventDialog],
