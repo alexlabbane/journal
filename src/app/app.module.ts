@@ -24,7 +24,8 @@ import { AngularFireModule } from '@angular/fire'
 import { AngularFireDatabaseModule } from '@angular/fire/database'
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { environment } from '../environments/environment';
-import { SettingsComponent } from './settings/settings.component'
+import { SettingsComponent } from './settings/settings.component';
+import { LoginComponent } from './login/login.component'
 
 if (!environment.firebase) {
   if (!environment.firebase.apiKey) {
@@ -41,7 +42,8 @@ if (!environment.firebase) {
     EntryViewComponent,
     EventDialog,
     NewEntryComponent,
-    SettingsComponent
+    SettingsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

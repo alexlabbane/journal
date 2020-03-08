@@ -122,6 +122,7 @@ export class EntryViewComponent implements OnInit {
 })
 export class EventDialog {
   constructor(
+    public database : AngularFireDatabase,
     public router : Router,
     public entryService : EntryServiceService,
     public dialogRef: MatDialogRef<EventDialog>,
@@ -151,6 +152,28 @@ export class EventDialog {
     
     if(result) {
       //Find event and delete it from the database
+      let deletedID = this.data.id;
+      let outerSub = this.database.list('/entries').valueChanges().subscribe((values) => {
+        let index = 0;
+        values.forEach((value : any) => {
+          if(value.id == deletedID) {
+            let indexToDelete = index;
+            let innerSub = this.database.list('/entries').snapshotChanges().subscribe((snaps) => {
+              let currentIndex = 0;
+              snaps.forEach((snap) => {
+                if(currentIndex == indexToDelete) {
+                  this.database.list('/entries/' + snap.key).remove();
+                }
+                currentIndex += 1;
+              });
+              innerSub.unsubscribe();
+            });
+          }
+          index += 1;
+        });
+
+        outerSub.unsubscribe();
+      });
     }
 
     this.dialogRef.close();

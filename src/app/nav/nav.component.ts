@@ -37,21 +37,11 @@ export class NavComponent implements OnInit {
       this.distributeSideNav(); //For event listener
     });
     this.distributeSideNav(); //On init
-
-
-    //Add event listener for hamburger
-    const hamburger = document.querySelector('.right');
-    const sideNav = document.querySelector('.sideNav');
-    
-    console.log(hamburger);
-    hamburger.addEventListener('click', ()=>{
-      hamburger.classList.toggle('hamburgerActive');
-      sideNav.classList.toggle('sideNavActive');
-      console.log("Oof");
-    });
   }
 
   toggleNavigationLinks() {
+    this.distributeSideNav();
+
     const hamburger = document.querySelector('.right');
     const sideNav = document.querySelector('.sideNav');
     
