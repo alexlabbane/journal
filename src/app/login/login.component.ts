@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/home');
         sessionStorage.setItem('loggedIn', 'true');
       } else {
-        //console.log("No");
+        console.log("No");
         window.alert("Username or Password incorrect.");
         sessionStorage.setItem('loggedIn', 'false');
       }
