@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { $ } from 'protractor';
 import { Router } from '@angular/router';
+import { FilterService } from '../filter.service';
 
 @Component({
   selector: 'nav',
@@ -9,9 +10,17 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  constructor(public router : Router) { }
+  filter : string = "";
+
+  constructor(public router : Router, private filterService : FilterService) { }
 
   ngOnInit() { }
+
+  setFilter() {
+    /* Sets filter service */
+    console.log("Current Filter: " + this.filter);
+    this.filterService.setFilter(this.filter);
+  }
 
   distributeSideNav() {
     const navLinks = document.querySelectorAll('.link');
@@ -21,7 +30,7 @@ export class NavComponent implements OnInit {
       let margin = 0;
       let navLink = navLinks[i] as HTMLElement;
 
-      if(i == 0) margin = 64 +marginEach;
+      if(i == 0) margin = 64 + marginEach;
       else margin = marginEach;
 
 
