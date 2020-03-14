@@ -4,6 +4,7 @@ import { Data, Router } from '@angular/router';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { EntryServiceService } from '../entry-service.service';
 import { identifierModuleUrl } from '@angular/compiler';
+import { FilterService } from '../filter.service';
 
 @Component({
   selector: 'app-entry-view',
@@ -18,9 +19,10 @@ export class EntryViewComponent implements OnInit {
   hidePreview = false;
   currentDate = new Date();
 
-  constructor(public dialog : MatDialog, public database : AngularFireDatabase, public EntryService : EntryServiceService) { }
+  constructor(public dialog : MatDialog, public database : AngularFireDatabase, public EntryService : EntryServiceService, private filterService : FilterService) { }
 
   ngOnInit() { 
+    this.filterService.subscribeToDatabase();
     //Subscribe to journal entries
     this.database.list('/entries').valueChanges().subscribe((values : []) => {
       this.entries = [];
@@ -62,19 +64,8 @@ export class EntryViewComponent implements OnInit {
   }
 
   filterItems() {
-    this.activeEntries = [];
-    //Filter by tag
-    let requiredMatches = this.activeSearchTags.length;
-    for(let i = 0; i < this.entries.length; i++) {
-      let entry : any = this.entries[i];
-      let matches = 0;
-      for(let j = 0; j < this.activeSearchTags.length; j++) {
-        if(!entry.tags.has(this.activeSearchTags[j])) break;
-        else matches = matches + 1;
-      }
-      if(matches == requiredMatches) this.activeEntries.push(entry);
-    }
-
+    this.filterService.activeSearchTags = this.activeSearchTags;
+    this.filterService.filterItems();
     //TODO: Filter by search terms
   }
 

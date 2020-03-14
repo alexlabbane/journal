@@ -18,8 +18,13 @@ export class NavComponent implements OnInit {
 
   setFilter() {
     /* Sets filter service */
-    console.log("Current Filter: " + this.filter);
     this.filterService.setFilter(this.filter);
+    this.filterItems();
+  }
+
+  filterItems() {
+    /* Uses filter to display appropriate entries */
+    this.filterService.filterItems();
   }
 
   distributeSideNav() {
