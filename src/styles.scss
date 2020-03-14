@@ -3,6 +3,26 @@
 
 @import '~@angular/material/theming';
 
+$my-white: (
+  50: #FFFFFF,
+  100: #FFFFFF,
+  200: #FFFFFF,
+  300: #FFFFFF,
+  400: #FFFFFF,
+  500: #FFFFFF,
+  600: #FFFFFF,
+  700: #FFFFFF,
+  800: #FFFFFF,
+  900: #FFFFFF,
+  A100: #FFFFFF,
+  A200: #FFFFFF,
+  A400: #FFFFFF,
+  A700: #FFFFFF,
+  contrast : (
+      
+  )
+);
+
 $my-purple: (
   50: #2a62a2,
   100: #2a62a2,
@@ -25,7 +45,7 @@ $my-purple: (
 
 $primary: mat-palette($my-purple);
 $accent:  mat-palette($my-purple, A200, A100, A400);
-$warn:    mat-palette($mat-red);
+$warn:    mat-palette($my-white);
 $theme:   mat-light-theme($primary, $accent, $warn);
 
 @include angular-material-theme($theme);

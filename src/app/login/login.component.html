@@ -6,5 +6,8 @@
     <mat-form-field>
         <input matInput type="password" class="password" name="password" placeholder="Password" [(ngModel)]="this.password">
     </mat-form-field>
-    <button (click)="onSubmit()">Submit</button>
+    <button (click)="onSubmit()">
+        Submit
+        <mat-spinner *ngIf="this.submitted" diameter="20" class="progressSpinner" color="warn"></mat-spinner>
+    </button>
 </div>

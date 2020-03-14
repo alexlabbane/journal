@@ -16,6 +16,17 @@
     color:#2a62a2;
 }
 
+:host ::ng-deep .progressSpinner {
+    position: absolute;
+    align-items: right;
+    float: right;
+    margin:0;
+    padding:0;
+    stroke:white;
+    right:70px;
+    bottom:52px;
+}
+
 button {
     border:0;
     padding:20px;

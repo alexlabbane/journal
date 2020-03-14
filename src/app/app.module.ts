@@ -20,6 +20,7 @@ import { MatNativeDateModule } from '@angular/material/core'
 import { MatSelectModule } from '@angular/material/select'
 import { MatIconModule } from '@angular/material/icon'
 import { MatTooltipModule, MatTooltip } from '@angular/material/tooltip'
+import { MatProgressSpinnerModule } from '@angular/material'
 import { AngularFireModule } from '@angular/fire'
 import { AngularFireDatabaseModule } from '@angular/fire/database'
 import { AngularEditorModule } from '@kolkov/angular-editor';
@@ -63,6 +64,7 @@ if (!environment.firebase) {
     MatSelectModule,
     MatIconModule,
     MatTooltipModule,
+    MatProgressSpinnerModule,
     AngularEditorModule
   ],
   entryComponents : [EventDialog],

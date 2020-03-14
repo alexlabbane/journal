@@ -53,6 +53,12 @@ export class NavComponent implements OnInit {
     this.distributeSideNav(); //On init
   }
 
+  logout() {
+    sessionStorage.setItem("loggedIn", "false");
+    this.toggleNavigationLinks();
+    this.router.navigateByUrl('/login');
+  }
+
   toggleNavigationLinks() {
     this.distributeSideNav();
 

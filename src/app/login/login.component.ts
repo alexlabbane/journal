@@ -12,16 +12,22 @@ export class LoginComponent implements OnInit {
 
   username = '';
   password = '';
+  submitted = false;
 
   constructor(private router : Router, private database : AngularFireDatabase, private http : HttpClient) { }
 
   ngOnInit() {
+    if(sessionStorage.getItem('loggedIn') == "true") {
+      //this.router.navigateByUrl('/home');
+    }
   }
 
   onSubmit() {
     const httpOptions = {
       withCredentials : true
     };
+
+    this.submitted = true; //Triggers progress spinner to show
 
     this.http.get("https://us-central1-material-journal.cloudfunctions.net/authenticateUser?username=" + this.username + "&password=" + this.password).subscribe((authenticated) => {
       if(authenticated) {
@@ -32,6 +38,7 @@ export class LoginComponent implements OnInit {
         //console.log("No");
         window.alert("Username or Password incorrect.");
         sessionStorage.setItem('loggedIn', 'false');
+        this.submitted = false;
       }
     });
 
