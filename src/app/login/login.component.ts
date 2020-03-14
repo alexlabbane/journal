@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
       withCredentials : true
     };
 
-    this.http.get("https://us-central1-material-journal.cloudfunctions.net/authenticateUser?username=" + this.username + "&password=" + this.password, httpOptions).subscribe((authenticated) => {
+    this.http.get("https://us-central1-material-journal.cloudfunctions.net/authenticateUser?username=" + this.username + "&password=" + this.password).subscribe((authenticated) => {
       if(authenticated) {
         //console.log("Yes");
         this.router.navigateByUrl('/home');

@@ -19,7 +19,7 @@ export class EntryViewComponent implements OnInit {
   hidePreview = false;
   currentDate = new Date();
 
-  constructor(public dialog : MatDialog, public database : AngularFireDatabase, public EntryService : EntryServiceService, private filterService : FilterService) { }
+  constructor(public dialog : MatDialog, public database : AngularFireDatabase, public EntryService : EntryServiceService, public filterService : FilterService) { }
 
   ngOnInit() { 
     this.filterService.subscribeToDatabase();
