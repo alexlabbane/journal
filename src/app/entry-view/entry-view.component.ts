@@ -64,6 +64,7 @@ export class EntryViewComponent implements OnInit {
   }
 
   filterItems() {
+    console.log("Filtering");
     this.filterService.activeSearchTags = this.activeSearchTags;
     this.filterService.filterItems();
     //TODO: Filter by search terms

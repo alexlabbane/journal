@@ -78,12 +78,13 @@ export class FilterService {
     this.activeEntries = [];
     let filterWords = this.filter.split(" ");
     //If no filter
-    if(this.filter.trim().length == 0) {
+    if(this.filter.trim().length == 0 && this.activeSearchTags.length == 0) {
       this.activeEntries = this.entries;
       return;
     }
 
     let requiredMatches = this.activeSearchTags.length; //For Tags
+    console.log("Search tag length: " + this.activeSearchTags.length);
     for(let i = 0; i < this.entries.length; i++) {
       requiredMatches = this.activeSearchTags.length;
       console.log("try");
@@ -99,6 +100,7 @@ export class FilterService {
       if(matches != requiredMatches) continue;
       //Filter by Text
       requiredMatches = filterWords.length;
+      if(this.filter.trim().length == 0) requiredMatches = 0;
       matches = 0;
       for(let j = 0; j < filterWords.length; j++) {
         if(this.words[i].has(filterWords[j].toLowerCase())) matches += 1;
