@@ -16,11 +16,12 @@ admin.initializeApp();
 /**
 * Here we're using Gmail to send 
 */
+//TODO: Resolve security issue with exposed credentials
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'scienceman800@gmail.com',
-        pass: '1234567890awe'
+        user: functions.config().reminder_email.user,
+        pass: functions.config().reminder_email.pass
     }
   });
 
@@ -88,9 +89,9 @@ export const sendReminderEmails = functions.https.onRequest((request, response) 
                 return response.send('No reminders for today');
             }
     
-            const dest = "alex.labbane@tamu.edu"; //Will need to be refactored for general purpose use
+            const dest = functions.config().reminder_email.default_dest; //Will need to be refactored for general purpose use
             const mailOptions = {
-                from: 'Alex Alab <scienceman800@gmail.com>', // Something like: Jane Doe <janedoe@gmail.com>
+                from: 'Automatically replaced by gmail', // Something like: Jane Doe <janedoe@gmail.com>
                 to: dest,
                 subject: "Memories de Jour: " + currentDate.toLocaleDateString(), // email subject
                 html: emailHead + emailBody // email content in HTML
