@@ -25,6 +25,7 @@
     "@kolkov/angular-editor": "^1.0.2",
     "angular-material": "^1.1.21",
     "firebase": "^7.6.2",
+    "nodemailer": "^6.4.6",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

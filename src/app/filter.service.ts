@@ -84,10 +84,10 @@ export class FilterService {
     }
 
     let requiredMatches = this.activeSearchTags.length; //For Tags
-    console.log("Search tag length: " + this.activeSearchTags.length);
+    //console.log("Search tag length: " + this.activeSearchTags.length);
     for(let i = 0; i < this.entries.length; i++) {
       requiredMatches = this.activeSearchTags.length;
-      console.log("try");
+      //console.log("try");
       //Filter by Tag
       let entry : any = this.entries[i];
       let matches = 0;
