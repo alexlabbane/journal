@@ -20,13 +20,8 @@ admin.initializeApp();
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-<<<<<<< HEAD
         user: functions.config().reminder_email.user,
         pass: functions.config().reminder_email.pass
-=======
-        user: 'hidden',
-        pass: 'hidden'
->>>>>>> a288b273f7a1160da97ad555a7b8113f6bb3dd05
     }
   });
 
@@ -94,15 +89,9 @@ export const sendReminderEmails = functions.https.onRequest((request, response) 
                 return response.send('No reminders for today');
             }
     
-<<<<<<< HEAD
             const dest = functions.config().reminder_email.default_dest; //Will need to be refactored for general purpose use
             const mailOptions = {
                 from: 'Automatically replaced by gmail', // Something like: Jane Doe <janedoe@gmail.com>
-=======
-            const dest = "hidden"; //Will need to be refactored for general purpose use
-            const mailOptions = {
-                from: 'hidden', // Something like: Jane Doe <janedoe@gmail.com>
->>>>>>> a288b273f7a1160da97ad555a7b8113f6bb3dd05
                 to: dest,
                 subject: "Memories de Jour: " + currentDate.toLocaleDateString(), // email subject
                 html: emailHead + emailBody // email content in HTML
